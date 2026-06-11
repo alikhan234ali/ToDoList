@@ -4,44 +4,102 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ToDo List</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="bg-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+
   <div class="app">
     <header class="header">
-      <h1>My ToDo List</h1>
-      <p>Organize your day, one task at a time</p>
+      <div class="logo">
+        <span class="logo-icon">✓</span>
+        <div>
+          <h1>TaskFlow</h1>
+          <p>Plan. Do. Done.</p>
+        </div>
+      </div>
     </header>
+
+    <section class="stats">
+      <div class="stat-card">
+        <span class="stat-num" id="statTotal">0</span>
+        <span class="stat-label">Total</span>
+      </div>
+      <div class="stat-card stat-active">
+        <span class="stat-num" id="statActive">0</span>
+        <span class="stat-label">Active</span>
+      </div>
+      <div class="stat-card stat-done">
+        <span class="stat-num" id="statDone">0</span>
+        <span class="stat-label">Done</span>
+      </div>
+    </section>
+
+    <div class="progress-wrap">
+      <div class="progress-info">
+        <span>Progress</span>
+        <span id="progressText">0%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
 
     <main class="card">
       <form id="taskForm" class="task-form">
-        <input
-          type="text"
-          id="taskInput"
-          placeholder="What do you need to do?"
-          autocomplete="off"
-          maxlength="120"
-        >
-        <button type="submit" id="submitBtn">Add Task</button>
+        <div class="input-wrap">
+          <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M5 12h14"/>
+          </svg>
+          <input
+            type="text"
+            id="taskInput"
+            placeholder="Add a new task..."
+            autocomplete="off"
+            maxlength="120"
+          >
+        </div>
+        <button type="submit" id="submitBtn" class="btn-add">
+          <span id="submitText">Add</span>
+        </button>
       </form>
 
-      <div class="toolbar">
-        <div class="filters">
-          <button type="button" class="filter-btn active" data-filter="all">All</button>
-          <button type="button" class="filter-btn" data-filter="active">Active</button>
-          <button type="button" class="filter-btn" data-filter="completed">Done</button>
-        </div>
-        <span id="taskCount" class="task-count">0 tasks</span>
+      <div class="list-header">
+        <h2>Your Tasks</h2>
+        <span id="taskCount" class="task-count">0 left</span>
       </div>
 
-      <ul id="taskList" class="task-list"></ul>
+      <div class="filters">
+        <button type="button" class="filter-btn active" data-filter="all">All</button>
+        <button type="button" class="filter-btn" data-filter="active">Active</button>
+        <button type="button" class="filter-btn" data-filter="completed">Completed</button>
+      </div>
 
-      <p id="emptyState" class="empty-state">No tasks yet. Add your first one above!</p>
+      <div class="list-area">
+        <ul id="taskList" class="task-list"></ul>
+
+        <div id="emptyState" class="empty-state">
+          <div class="empty-icon">📝</div>
+          <h3>No tasks yet</h3>
+          <p>Add your first task above and start being productive!</p>
+        </div>
+      </div>
 
       <button type="button" id="clearCompleted" class="clear-btn" hidden>
-        Clear completed
+        Clear all completed tasks
       </button>
     </main>
+
+    <footer class="footer">
+      <p>Built with HTML, CSS & JavaScript</p>
+    </footer>
   </div>
 
   <script src="script.js"></script>
